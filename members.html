@@ -2,25 +2,211 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>联盟成员介绍 - 无忧谷</title>
   <style>
-    body { font-family: "微软雅黑", Arial, sans-serif; max-width: 600px; margin: 30px auto; padding: 0 20px; line-height: 1.6; color: #333; background: #f9f9f9; }
-    h1 { text-align: center; margin-bottom: 20px; }
-    ul { list-style-type: disc; padding-left: 20px; }
-    a.back { display: inline-block; margin-top: 20px; text-decoration: none; color: #3498db; }
+    body {
+      font-family: "微软雅黑", Arial, sans-serif;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #333;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    /* 导航栏样式 */
+    nav {
+      background-color: #2c3e50;
+      position: relative;
+      margin-bottom: 30px;
+      border-radius: 8px;
+    }
+    nav .menu {
+      display: flex;
+      list-style: none;
+      margin: 0; padding: 0 20px;
+    }
+    nav .menu li {
+      margin-right: 20px;
+    }
+    nav .menu li a {
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 15px 0;
+      display: block;
+    }
+    nav .menu li a:hover,
+    nav .menu li a.active {
+      color: #e67e22;
+      border-bottom: 2px solid #e67e22;
+    }
+    /* 汉堡菜单按钮 */
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      background-color: #ecf0f1;
+      border-radius: 2px;
+    }
+    /* 响应式设置 */
+    @media (max-width: 600px) {
+      nav .menu {
+        flex-direction: column;
+        display: none;
+        background-color: #34495e;
+        width: 100%;
+        border-radius: 0 0 8px 8px;
+      }
+      nav .menu.show {
+        display: flex;
+      }
+      nav .menu li {
+        margin: 0;
+        border-top: 1px solid #2c3e50;
+      }
+      nav .menu li a {
+        padding: 12px 20px;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* 人物卡片容器 */
+    .members-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    /* 单个成员卡片 */
+    .member-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .member-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgb(0 0 0 / 0.15);
+    }
+    .member-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      border: 3px solid #e67e22;
+    }
+    .member-name {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    .member-desc {
+      font-size: 0.95em;
+      color: #555;
+      min-height: 50px; /* 保持高度一致 */
+    }
+
+    /* 返回首页链接 */
+    .back-link {
+      display: inline-block;
+      margin: 30px auto 40px;
+      text-decoration: none;
+      color: #3498db;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+    }
   </style>
 </head>
 <body>
-  <h1>联盟成员介绍</h1>
-  <ul>
-    <li>二十六 — 游戏联盟盟主，热爱策略游戏做饭的高手</li>
-    <li>胡同里的狮子 — 游戏管理员，热爱鼓弄乱七八糟的东西</li>
-    <li>小熊饼干 — 游戏颜值担当，喜爱躺平还得有钱赚</li>
-    <li>除了英俊其它没什么好说的 — 高手，喜欢俊</li>
-    <li>ycy — 某某某达人，涉猎广泛</li>
-    <!-- 等着大家的积极参与喽 -->
-  </ul>
 
-  <a href="index.html" class="back">← 返回首页</a>
+<nav>
+  <ul class="menu" id="menu">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="members.html" class="active">成员介绍</a></li>
+  </ul>
+  <div class="menu-toggle" id="menu-toggle" aria-label="菜单切换" role="button" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<h1>联盟成员介绍</h1>
+
+<div class="members-container">
+  <div class="member-card">
+    <img src="member1.jpg" alt="二十六" class="member-photo" />
+    <div class="member-name">二十六</div>
+    <div class="member-desc">游戏联盟盟主，热爱策略游戏，做饭的高手。</div>
+  </div>
+
+  <div class="member-card">
+    <img src="member2.jpg" alt="胡同里的狮子" class="member-photo" />
+    <div class="member-name">胡同里的狮子</div>
+    <div class="member-desc">游戏管理员，热爱鼓弄乱七八糟的东西。</div>
+  </div>
+
+  <div class="member-card">
+    <img src="member3.jpg" alt="小熊饼干" class="member-photo" />
+    <div class="member-name">小熊饼干</div>
+    <div class="member-desc">游戏颜值担当，喜爱躺平还得有钱赚。</div>
+  </div>
+
+  <div class="member-card">
+    <img src="member4.jpg" alt="除了英俊其它没什么好说的" class="member-photo" />
+    <div class="member-name">除了英俊其它没什么好说的</div>
+    <div class="member-desc">高手，喜欢俊。</div>
+  </div>
+
+  <div class="member-card">
+    <img src="member5.jpg" alt="ycy" class="member-photo" />
+    <div class="member-name">ycy</div>
+    <div class="member-desc">某某某达人，涉猎广泛。</div>
+  </div>
+</div>
+
+<a href="index.html" class="back-link">← 返回首页</a>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+
+  menuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      menu.classList.toggle('show');
+      e.preventDefault();
+    }
+  });
+</script>
+
 </body>
 </html>
