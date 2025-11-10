@@ -101,6 +101,10 @@
       box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
       padding: 15px;
       text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-5px);
     }
 
     video {
@@ -112,6 +116,13 @@
     .video-title {
       font-weight: 600;
       color: #2c3e50;
+      margin-bottom: 6px;
+    }
+
+    .video-desc {
+      font-size: 0.9em;
+      color: #666;
+      line-height: 1.5;
     }
 
     .back-link {
@@ -144,26 +155,56 @@
 <div class="video-section">
   <div class="video-card">
     <video controls>
-      <source src="video1.mp4" type="video/mp4" />
+      <source src="竞技场.mp4" type="video/mp4" />
       你的浏览器不支持视频播放。
     </video>
-    <div class="video-title">无忧谷联盟精彩瞬间</div>
+    <div class="video-title">竞技场打法</div>
+    <p class="video-desc">记录了如何刷新，在几点开始，手速快的人可以卡点的呦。</p>
   </div>
 
   <div class="video-card">
     <video controls>
-      <source src="video2.mp4" type="video/mp4" />
+      <source src="商店采购指南.mp4" type="video/mp4" />
       你的浏览器不支持视频播放。
     </video>
-    <div class="video-title">成员活动记录</div>
+    <div class="video-title">商店采购</div>
+    <p class="video-desc">看看每日的商店都刷新了什么，不要什么都买的噢，把钱花在刀刃上。</p>
   </div>
 
   <div class="video-card">
     <video controls>
-      <source src="video3.mp4" type="video/mp4" />
+      <source src="打熊.mp4" type="video/mp4" />
       你的浏览器不支持视频播放。
     </video>
-    <div class="video-title">游戏战报分享</div>
+    <div class="video-title">打熊</div>
+    <p class="video-desc">收录了如何打熊，如何开车，如何坐车。</p>
+  </div>
+
+  <div class="video-card">
+    <video controls>
+      <source src="维京人打法.mp4" type="video/mp4" />
+      你的浏览器不支持视频播放。
+    </video>
+    <div class="video-title">维京人打法</div>
+    <p class="video-desc">收录了如何驻防，如何互换，最后要做什么。</p>
+  </div>
+
+  <div class="video-card">
+    <video controls>
+      <source src="平时操作1.mp4" type="video/mp4" />
+      你的浏览器不支持视频播放。
+    </video>
+    <div class="video-title">随便看看1</div>
+    <p class="video-desc">先看看，未来会完善。</p>
+  </div>
+
+  <div class="video-card">
+    <video controls>
+      <source src="平时操作2.mp4" type="video/mp4" />
+      你的浏览器不支持视频播放。
+    </video>
+    <div class="video-title">随便看看2</div>
+    <p class="video-desc">先看看，未来会完善。</p>
   </div>
 </div>
 
