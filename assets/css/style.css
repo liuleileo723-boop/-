@@ -1,0 +1,111 @@
+/* ===== 无忧谷联盟指南 - 游戏风格版 ===== */
+
+/* 全局基础样式 */
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+  background: radial-gradient(circle at top, #0b0f1e 0%, #05060a 100%);
+  color: #e0e6ff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* 主标题 */
+h1 {
+  text-align: center;
+  background: linear-gradient(90deg, #00d9ff, #00ffa3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.2em;
+  letter-spacing: 2px;
+  margin: 25px 0 10px;
+}
+
+/* 副标题说明 */
+p[style*="text-align:center"] {
+  color: #7d8bff !important;
+  font-size: 0.95em;
+}
+
+/* 幻灯片卡片样式 */
+.slide {
+  max-width: 850px;
+  margin: 30px auto;
+  background: rgba(15, 20, 40, 0.8);
+  border-radius: 14px;
+  border: 1px solid rgba(0, 255, 200, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 150, 0.15);
+  padding: 22px 20px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.slide:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 28px rgba(0, 255, 200, 0.3);
+}
+
+/* 图片样式 */
+.slide-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 10px auto 18px;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 255, 180, 0.2);
+  box-shadow: 0 0 10px rgba(0, 255, 150, 0.25);
+}
+
+/* 文本样式 */
+.slide-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  color: #d7e2ff;
+}
+
+.slide-text strong {
+  color: #00ffc3;
+}
+
+.slide-text em {
+  color: #ffa76d;
+}
+
+/* 章节分隔线 */
+.slide + .slide::before {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 1px;
+  margin: 30px auto;
+  background: linear-gradient(90deg, transparent, rgba(0,255,180,0.4), transparent);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,255,200,0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,255,200,0.6);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  body {
+    padding: 0 8px;
+  }
+  .slide {
+    padding: 16px;
+    margin: 20px 0;
+  }
+  .slide-text {
+    font-size: 0.95rem;
+  }
+  h1 {
+    font-size: 1.7em;
+  }
+}
