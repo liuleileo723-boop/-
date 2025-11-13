@@ -213,6 +213,7 @@
 <nav>
   <ul class="menu" id="menu">
     <li><a href="index.html">首页</a></li>
+    <li><a href="members.html">成员介绍</a></li>
     <li><a href="resources.html" class="active">精彩瞬间</a></li>
     <li><a href="articles.html">玩法介绍</a></li>
     <li><a href="zhandui1.html">战队荣誉</a></li>
@@ -296,20 +297,20 @@
 
 <script>
   Waline.init({
-    el: '#waline',
-    serverURL: 'https://leancloud-api.waline.js.org',
-    path: window.location.pathname, // 当前页面路径，用于区分不同页面评论
-    lang: 'zh-CN',
-    meta: ['nick', 'mail'],   // 用户输入项
-    requiredMeta: ['nick'],   // 昵称必填
-    emoji: [
-      'https://unpkg.com/@waline/emojis@1.1.0/weibo',
-      'https://unpkg.com/@waline/emojis@1.1.0/qq'
-    ],
-    locale: {
-      placeholder: '留下你的评论吧（可填写微信昵称）~'
-    }
-  });
+  el: '#waline',
+  serverURL: 'https://1fjstwfyh-sjfglkstv-liuleileo723-boops-projects.vercel.app',
+  path: window.location.pathname,
+  meta: ['nick', 'mail'],    // 用户可以输入昵称和邮箱
+  requiredMeta: ['nick'],     // 昵称必填
+  lang: 'zh-CN',
+  emoji: [
+    'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+    'https://unpkg.com/@waline/emojis@1.1.0/qq'
+  ],
+  locale: {
+    placeholder: '留下你的评论吧（可填写微信昵称）~'
+  }
+});
 </script>
 
 </body>
