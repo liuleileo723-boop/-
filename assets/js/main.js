@@ -67,9 +67,16 @@ document.addEventListener("DOMContentLoaded", () => {
 const menuToggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('menu');
 
-if (menuToggle && menu) {
-  menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('active');
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('show');
+  menuToggle.classList.toggle('active');
+});
+
+menuToggle.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    menu.classList.toggle('show');
     menuToggle.classList.toggle('active');
-  });
+    e.preventDefault();
+  }
+});
 }
