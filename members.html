@@ -30,7 +30,8 @@
     nav .menu {
       display: flex;
       list-style: none;
-      margin: 0; padding: 0 20px;
+      margin: 0;
+      padding: 0 20px;
     }
     nav .menu li {
       margin-right: 20px;
@@ -47,90 +48,83 @@
       color: #e67e22;
       border-bottom: 2px solid #e67e22;
     }
-    /* 汉堡菜单按钮 */
+
+    /* 汉堡菜单按钮样式 */
     .menu-toggle {
-  display: none;
-  position: absolute;
-  top: 12px;
-  right: 20px;
-  width: 42px;
-  height: 34px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease;
-  z-index: 999;
-}
-
-.menu-toggle span {
-  display: block;
-  height: 5px;
-  width: 100%;
-  border-radius: 3px;
-  background: linear-gradient(90deg, #ff0000, #ff7b00, #ffd500);
-  box-shadow: 0 0 12px rgba(255, 90, 0, 0.9), 0 0 20px rgba(255, 150, 0, 0.7);
-  transition: all 0.35s ease;
-}
-
-/* 鼠标悬停时放大和加强光晕 */
-.menu-toggle:hover {
-  transform: scale(1.15);
-}
-.menu-toggle:hover span {
-  box-shadow: 0 0 15px rgba(255, 120, 0, 1), 0 0 25px rgba(255, 180, 0, 0.8);
-}
-
-/* 点击后变成“X” */
-.menu-toggle.active span:nth-child(1) {
-  transform: translateY(14px) rotate(45deg);
-}
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.active span:nth-child(3) {
-  transform: translateY(-14px) rotate(-45deg);
-}
-
-/* 响应式显示 */
-@media (max-width: 600px) {
-  .menu-toggle {
-    display: flex;
-  }
-}
+      display: none; /* 默认隐藏，响应式时显示 */
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      width: 42px;
+      height: 34px;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+      z-index: 999;
+      display: flex;
+    }
+    .menu-toggle span {
+      display: block;
+      height: 5px;
+      width: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #ff0000, #ff7b00, #ffd500);
+      box-shadow: 0 0 12px rgba(255, 90, 0, 0.9), 0 0 20px rgba(255, 150, 0, 0.7);
+      transition: all 0.35s ease;
+    }
+    .menu-toggle:hover {
+      transform: scale(1.15);
+    }
+    .menu-toggle:hover span {
+      box-shadow: 0 0 15px rgba(255, 120, 0, 1), 0 0 25px rgba(255, 180, 0, 0.8);
+    }
+    /* 点击后变成“X” */
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(14px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-14px) rotate(-45deg);
+    }
 
     /* 响应式设置 */
     @media (max-width: 600px) {
+      .menu-toggle {
+        display: flex; /* 手机端显示按钮 */
+      }
       nav .menu {
         flex-direction: column;
-        display: none;
+        display: none; /* 默认隐藏菜单 */
         background-color: #34495e;
         width: 100%;
         border-radius: 0 0 8px 8px;
+        margin: 0;
+        padding: 0;
       }
       nav .menu.show {
-        display: flex;
+        display: flex; /* 点击按钮后显示菜单 */
       }
       nav .menu li {
         margin: 0;
         border-top: 1px solid #2c3e50;
       }
+      nav .menu li:first-child {
+        border-top: none;
+      }
       nav .menu li a {
         padding: 12px 20px;
       }
-      .menu-toggle {
-        display: flex;
-      }
     }
 
-    /* 人物卡片容器 */
+    /* 成员卡片相关样式（可根据需要调整） */
     .members-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
-
-    /* 单个成员卡片 */
     .member-card {
       background: white;
       border-radius: 10px;
@@ -160,10 +154,8 @@
     .member-desc {
       font-size: 0.95em;
       color: #555;
-      min-height: 50px; /* 保持高度一致 */
+      min-height: 50px;
     }
-
-    /* 返回首页链接 */
     .back-link {
       display: inline-block;
       margin: 30px auto 40px;
@@ -185,13 +177,18 @@
     <li><a href="articles.html">玩法介绍</a></li>
     <li><a href="zhandui1.html">战队荣誉</a></li>
   </ul>
- <div class="menu-toggle" id="menu-toggle" aria-label="菜单切换" role="button" tabindex="0">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+  <div
+    class="menu-toggle"
+    id="menu-toggle"
+    aria-label="菜单切换"
+    role="button"
+    tabindex="0"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </nav>
-
 <h1>联盟成员介绍</h1>
 
 <div class="members-container">
