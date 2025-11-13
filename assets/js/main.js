@@ -63,3 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+// === 红橙炫彩菜单按钮交互逻辑 ===
+const menuToggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('menu');
+
+if (menuToggle && menu) {
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+}
