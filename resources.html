@@ -283,21 +283,6 @@
     });
   });
 
-  // 本地临时评论功能（可以删）
-  document.querySelectorAll('.comment-form').forEach(form => {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const input = form.querySelector('.comment-input');
-      const commentList = form.previousElementSibling;
-      const text = input.value.trim();
-      if (!text) return;
-      const p = document.createElement('p');
-      p.textContent = text;
-      commentList.appendChild(p);
-      input.value = '';
-      input.focus();
-    });
-  });
 </script>
 
 <!-- ============================= -->
