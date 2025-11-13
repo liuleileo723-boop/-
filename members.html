@@ -49,22 +49,56 @@
     }
     /* 汉堡菜单按钮 */
     .menu-toggle {
-      display: none;
-      position: absolute;
-      top: 12px;
-      right: 20px;
-      cursor: pointer;
-      width: 30px;
-      height: 25px;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .menu-toggle span {
-      display: block;
-      height: 3px;
-      background-color: #ecf0f1;
-      border-radius: 2px;
-    }
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  width: 42px;
+  height: 34px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 5px;
+  width: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ff0000, #ff7b00, #ffd500);
+  box-shadow: 0 0 12px rgba(255, 90, 0, 0.9), 0 0 20px rgba(255, 150, 0, 0.7);
+  transition: all 0.35s ease;
+}
+
+/* 鼠标悬停时放大和加强光晕 */
+.menu-toggle:hover {
+  transform: scale(1.15);
+}
+.menu-toggle:hover span {
+  box-shadow: 0 0 15px rgba(255, 120, 0, 1), 0 0 25px rgba(255, 180, 0, 0.8);
+}
+
+/* 点击后变成“X” */
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(14px) rotate(45deg);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-14px) rotate(-45deg);
+}
+
+/* 响应式显示 */
+@media (max-width: 600px) {
+  .menu-toggle {
+    display: flex;
+  }
+}
+
     /* 响应式设置 */
     @media (max-width: 600px) {
       nav .menu {
