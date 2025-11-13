@@ -294,23 +294,22 @@
 <!-- 加载 Waline 库和样式 -->
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
 <script src="https://unpkg.com/@waline/client@v3/dist/waline.js"></script>
-
 <script>
   Waline.init({
-  el: '#waline',
-  serverURL: 'https://1fjstwfyh-4k43qrddk-liuleileo723-boops-projects.vercel.app',
-  path: window.location.pathname,
-  meta: ['nick', 'mail'],
-  requiredMeta: ['nick'],
-  lang: 'zh-CN',
-  emoji: [
-    'https://unpkg.com/@waline/emojis@1.1.0/weibo',
-    'https://unpkg.com/@waline/emojis@1.1.0/qq'
-  ],
-  locale: {
-    placeholder: '留下你的评论吧（可填写微信昵称）~'
-  }
-});
+    el: '#waline',
+    serverURL: 'https://1fjstwfyh‑4k43qrddk‑liuleileo723‑boops‑projects.vercel.app',
+    path: window.location.pathname,
+    meta: ['nick', 'mail'],
+    requiredMeta: ['nick'],
+    lang: 'zh-CN',
+    emoji: [
+      'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+      'https://unpkg.com/@waline/emojis@1.1.0/qq'
+    ],
+    locale: {
+      placeholder: '留下你的评论吧（可填写微信昵称）~'
+    }
+  });
 </script>
 
 </body>
