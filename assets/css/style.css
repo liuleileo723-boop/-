@@ -109,3 +109,55 @@ p[style*="text-align:center"] {
     font-size: 1.7em;
   }
 }
+
+/* === 红橙炫彩菜单按钮样式开始 === */
+.menu-toggle {
+  width: 42px;
+  height: 34px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+/* 三条炫彩线条 */
+.menu-toggle span {
+  display: block;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff0000, #ff7b00, #ffd500);
+  border-radius: 3px;
+  box-shadow: 0 0 12px rgba(255, 90, 0, 0.9), 0 0 20px rgba(255, 150, 0, 0.7);
+  transition: all 0.35s ease;
+}
+
+/* 悬停时放大、加重发光 */
+.menu-toggle:hover {
+  transform: scale(1.15);
+}
+.menu-toggle:hover span {
+  box-shadow: 0 0 15px rgba(255, 120, 0, 1), 0 0 25px rgba(255, 180, 0, 0.8);
+}
+
+/* 点击后变成“X”形 */
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(14px) rotate(45deg);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-14px) rotate(-45deg);
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .menu-toggle span {
+    background: linear-gradient(90deg, #ff6600, #ff3300, #ffcc00);
+    box-shadow: 0 0 15px rgba(255, 80, 0, 1), 0 0 30px rgba(255, 180, 0, 0.8);
+  }
+}
+/* === 红橙炫彩菜单按钮样式结束 === */
