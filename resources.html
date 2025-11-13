@@ -258,7 +258,7 @@
 </div>
 
 <script>
-  // 菜单开关逻辑（保持你之前的）
+  // 菜单开关逻辑
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
 
@@ -275,15 +275,15 @@
     }
   });
 
-  // 点击标题切换评论区显示
+  // 点击标题展开评论区
   document.querySelectorAll('.photo-title').forEach(title => {
     title.addEventListener('click', () => {
-      const commentsSection = title.nextElementSibling.nextElementSibling; // photo-desc 后面就是 comments-section
+      const commentsSection = title.nextElementSibling.nextElementSibling;
       commentsSection.classList.toggle('active');
     });
   });
 
-  // 评论提交功能
+  // 本地临时评论功能（可以删）
   document.querySelectorAll('.comment-form').forEach(form => {
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -291,15 +291,39 @@
       const commentList = form.previousElementSibling;
       const text = input.value.trim();
       if (!text) return;
-
-      // 创建新的评论元素
       const p = document.createElement('p');
       p.textContent = text;
       commentList.appendChild(p);
-
       input.value = '';
       input.focus();
     });
+  });
+</script>
+
+<!-- ============================= -->
+<!-- 2️⃣ Waline 评论系统（全局评论区） -->
+<!-- ============================= -->
+<div id="waline"></div>
+
+<!-- 加载 Waline 库和样式 -->
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+<script src="https://unpkg.com/@waline/client@v3/dist/waline.js"></script>
+
+<script>
+  Waline.init({
+    el: '#waline',
+    serverURL: 'https://leancloud-api.waline.js.org',
+    path: window.location.pathname, // 当前页面路径，用于区分不同页面评论
+    lang: 'zh-CN',
+    meta: ['nick', 'mail'],   // 用户输入项
+    requiredMeta: ['nick'],   // 昵称必填
+    emoji: [
+      'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+      'https://unpkg.com/@waline/emojis@1.1.0/qq'
+    ],
+    locale: {
+      placeholder: '留下你的评论吧（可填写微信昵称）~'
+    }
   });
 </script>
 
