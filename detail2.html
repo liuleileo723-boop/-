@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>遭遇围攻 · 无忧谷</title>
+  <style>
+    :root{--max-w:900px;--accent:#e67e22;--bg:#f9f9f9}
+    html,body{margin:0;padding:0;background:var(--bg);font-family:"微软雅黑","PingFang SC",Arial,Helvetica,sans-serif;color:#222}
+    .container{max-width:var(--max-w);margin:22px auto;padding:0 16px}
+    nav{background:#2c3e50;border-radius:8px;padding:8px 12px;position:relative}
+    nav .menu{display:flex;gap:12px;align-items:center;list-style:none;margin:0;padding:0}
+    nav .menu a{color:#ecf0f1;text-decoration:none;font-weight:600;padding:10px 6px;display:block}
+    .menu-toggle{position:absolute;right:12px;top:8px;width:42px;height:34px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer}
+    .menu-toggle span{height:5px;border-radius:3px;background:linear-gradient(90deg,#ff0000,#ff7b00,#ffd500);box-shadow:0 0 12px rgba(255,90,0,0.9)}
+    h1{text-align:center;margin:18px 0;color:#233049;font-size:1.4rem}
+    .breadcrumb{font-size:0.9rem;color:#6b7280;margin-bottom:10px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);overflow:hidden;margin-bottom:18px}
+    .hero{width:100%;height:auto;display:block;object-fit:cover}
+    .card-body{padding:16px}
+    .title{font-size:1.25rem;font-weight:700;margin-bottom:8px;color:#1f2d3d}
+    .meta{font-size:0.9rem;color:#6b7280;margin-bottom:12px}
+    .desc{font-size:1rem;line-height:1.7;color:#333;white-space:pre-wrap;margin-bottom:14px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{background:linear-gradient(90deg,#ff6b6b,#ffb366);padding:6px 10px;border-radius:999px;color:#2b1b00;font-weight:700}
+    .back{display:inline-block;margin-top:6px;color:var(--accent);text-decoration:none;font-weight:600}
+    #waline{margin-top:18px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul class="menu" id="menu">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="members.html">成员介绍</a></li>
+        <li><a href="resources.html" class="active">精彩瞬间</a></li>
+        <li><a href="articles.html">玩法介绍</a></li>
+        <li><a href="zhandui1.html">战队荣誉</a></li>
+      </ul>
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+    </nav>
+
+    <h1>遭遇围攻 · 紧急驻防</h1>
+
+    <div class="breadcrumb">无忧谷 / 精彩瞬间 / 遭遇围攻</div>
+
+    <article class="card">
+      <img src="img/example2.jpg" alt="遭遇围攻" class="hero" />
+      <div class="card-body">
+        <div class="title">遭遇围攻，苦战连连</div>
+        <div class="meta">高战力突袭 · 全员互助 · 管理协调化险为夷</div>
+
+        <div class="desc">
+深夜突发警报：一位高战力大佬悄然逼近，目标直指我盟成员。频道瞬时紧张——“快支援！驻防我这！队列调一下！”  
+
+成员们迅速相互驻防、互相支援，防线在混乱中逐步稳定。联盟管理全程调度、沟通对手，冷静化解冲突。  
+
+战后大家松口气，感慨彼此的可靠：在危机面前，正是团队协作让我们渡过难关。
+        </div>
+
+        <div class="tags" aria-hidden="true">
+          <div class="tag">🚨 紧急支援</div>
+          <div class="tag">🛡️ 全盟戒备</div>
+          <div class="tag">🤝 协作防守</div>
+        </div>
+
+        <a class="back" href="resources.html">← 返回精彩瞬间</a>
+      </div>
+    </article>
+
+    <div id="waline"></div>
+  </div>
+
+  <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+  <script src="https://unpkg.com/@waline/client@v3/dist/waline.js"></script>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    menuToggle.addEventListener('click', ()=> {
+      menu.classList.toggle('show');
+      menuToggle.classList.toggle('active');
+    });
+
+    Waline.init({
+      el: '#waline',
+      serverURL: 'https://1fjstwfyh-4k43qrddk-liuleileo723-boops-projects.vercel.app',
+      path: window.location.pathname,
+      meta: ['nick','mail'],
+      requiredMeta: ['nick'],
+      lang: 'zh-CN',
+      locale: { placeholder: '留下你的评论（填写微信昵称可显示）~' }
+    });
+  </script>
+</body>
+</html>
