@@ -1,138 +1,311 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>联盟大劫掠 · 无忧谷</title>
-
-  <!-- Waline CSS 会在 body 底部再引入，为了首屏更快此处不重复引入 -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>精彩瞬间 - 无忧谷</title>
   <style>
-    :root {
-      --max-w: 900px;
-      --accent: #e67e22;
-      --muted: #6b7280;
-      --bg: #f9f9f9;
-      --card-bg: #fff;
+    body {
+      font-family: "微软雅黑", Arial, sans-serif;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #333;
+      background: #f9f9f9;
     }
-    html,body{margin:0;padding:0;background:var(--bg);font-family:"微软雅黑","PingFang SC",Arial,Helvetica,sans-serif;color:#222}
-    .container{max-width:var(--max-w);margin:22px auto;padding:0 16px}
-    nav{background:#2c3e50;border-radius:8px;padding:8px 12px;position:relative}
-    nav .menu{display:flex;gap:12px;align-items:center;list-style:none;margin:0;padding:0}
-    nav .menu a{color:#ecf0f1;text-decoration:none;font-weight:600;padding:10px 6px;display:block}
-    nav .menu a.active{color:var(--accent);border-bottom:2px solid var(--accent)}
-    .menu-toggle{position:absolute;right:12px;top:8px;width:42px;height:34px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer}
-    .menu-toggle span{height:5px;border-radius:3px;background:linear-gradient(90deg,#ff0000,#ff7b00,#ffd500);box-shadow:0 0 12px rgba(255,90,0,0.9)}
-    h1{font-size:1.4rem;text-align:center;margin:18px 0;color:#233049}
-    .breadcrumb{font-size:0.9rem;color:var(--muted);margin-bottom:10px}
-    .card{background:var(--card-bg);border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);overflow:hidden;margin-bottom:18px}
-    .hero{width:100%;height:auto;display:block;object-fit:cover}
-    .hero-img {
-    width: 60%;
-    max-width: 320px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 12px;
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
     }
-    .card-body{padding:16px}
-    .title{font-size:1.25rem;font-weight:700;color:#1f2d3d;margin-bottom:8px}
-    .meta{font-size:0.9rem;color:var(--muted);margin-bottom:12px}
-    .desc{font-size:1rem;color:#333;line-height:1.7;margin-bottom:14px;white-space:pre-wrap}
-    .tags{display:flex;flex-wrap:wrap;gap:8px}
-    .tag{background:linear-gradient(90deg,#ff8a00,#ffc85a);color:#2b1b00;padding:6px 10px;border-radius:999px;font-weight:700;font-size:0.9rem}
-    .back{display:inline-block;margin-top:6px;color:var(--accent);text-decoration:none;font-weight:600}
-    /* 评论容器样式占位 */
-    #waline{margin-top:18px}
-    /* Responsive */
-    @media (max-width:600px){
-      .title{font-size:1.1rem}
-      .desc{font-size:0.98rem}
+
+    nav {
+      background-color: #2c3e50;
+      position: relative;
+      margin-bottom: 30px;
+      border-radius: 8px;
+    }
+    nav .menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0 20px;
+    }
+    nav .menu li {
+      margin-right: 20px;
+    }
+    nav .menu li a {
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 15px 0;
+      display: block;
+    }
+    nav .menu li a:hover,
+    nav .menu li a.active {
+      color: #e67e22;
+      border-bottom: 2px solid #e67e22;
+    }
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      width: 42px;
+      height: 34px;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+      z-index: 999;
+      display: flex;
+    }
+    .menu-toggle span {
+      display: block;
+      height: 5px;
+      width: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #ff0000, #ff7b00, #ffd500);
+      box-shadow: 0 0 12px rgba(255, 90, 0, 0.9), 0 0 20px rgba(255, 150, 0, 0.7);
+      transition: all 0.35s ease;
+    }
+    .menu-toggle:hover {
+      transform: scale(1.15);
+    }
+    .menu-toggle:hover span {
+      box-shadow: 0 0 15px rgba(255, 120, 0, 1), 0 0 25px rgba(255, 180, 0, 0.8);
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(14px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-14px) rotate(-45deg);
+    }
+    @media (max-width: 600px) {
+      nav .menu {
+        flex-direction: column;
+        display: none;
+        background-color: #34495e;
+        width: 100%;
+        border-radius: 0 0 8px 8px;
+      }
+      nav .menu.show {
+        display: flex;
+      }
+      nav .menu li {
+        margin: 0;
+        border-top: 1px solid #2c3e50;
+      }
+      nav .menu li:first-child {
+        border-top: none;
+      }
+      nav .menu li a {
+        padding: 12px 20px;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .photo-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .photo-item {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      transition: box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .photo-item:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+    .photo-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .photo-title {
+      font-weight: 700;
+      font-size: 1.1em;
+      margin-bottom: 6px;
+      color: #2c3e50;
+      cursor: pointer;
+      user-select: none;
+    }
+    .photo-desc {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 10px;
+      flex-grow: 1;
+    }
+
+    /* 点赞、收藏、转发按钮组 */
+    .action-buttons {
+      margin-top: auto;
+      display: flex;
+      gap: 12px;
+    }
+    .action-buttons button {
+      cursor: pointer;
+      background: #f0f0f0;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .action-buttons button:hover {
+      background-color: #e67e22;
+      color: white;
+    }
+    .btn-like.liked {
+      color: #e74c3c;
+    }
+    .btn-favorite.favorited {
+      color: #f1c40f;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <nav>
-      <ul class="menu" id="menu">
-        <li><a href="index.html">首页</a></li>
-        <li><a href="members.html">成员介绍</a></li>
-        <li><a href="resources.html" class="active">精彩瞬间</a></li>
-        <li><a href="articles.html">玩法介绍</a></li>
-        <li><a href="zhandui1.html">战队荣誉</a></li>
-      </ul>
 
-      <div class="menu-toggle" id="menu-toggle" aria-label="菜单切换" role="button" tabindex="0">
-        <span></span><span></span><span></span>
-      </div>
-    </nav>
+<nav>
+  <ul class="menu" id="menu">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="members.html">成员介绍</a></li>
+    <li><a href="resources.html" class="active">精彩瞬间</a></li>
+    <li><a href="articles.html">玩法介绍</a></li>
+    <li><a href="zhandui1.html">战队荣誉</a></li>
+  </ul>
+  <div class="menu-toggle" id="menu-toggle" aria-label="菜单切换" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
-    <h1>联盟大劫掠 · 野生财主突然出现！</h1>
+<h1>精彩瞬间</h1>
 
-    <div class="breadcrumb">无忧谷 / 精彩瞬间 / 联盟大劫掠</div>
+<div class="photo-list" id="photo-list">
+  <div class="photo-item" data-id="1">
+    <img src="img/example1.jpg" alt="联盟大劫掠" class="photo-img" />
+    <div class="photo-title">联盟大劫掠，意外遇见野生财主！</div>
+    <div class="photo-desc">
+      侦察队忽然报来一条绝不能错过的消息：在野外发现了传说中的“野生大财主”！频道里瞬间炸开——“快！在线的都上！立刻马上，别磨叽！”大家心情急切，队列风驰电掣地整齐，仿佛要把整个地图掀翻。我们冲进去、分秒必争，抢劫过程既紧张又带着疯狂的欢笑。当资源像雨点般刷进仓库，盟里又是一片欢呼与比拼：谁的收益最多？谁出手最狠？最后大家围坐晒图分享战利品，仿佛那一刻全盟都在庆祝——“弄完就收场，这波稳了！” 🎉
+    </div>
 
-    <article class="card">
-      <img src="img/example1.jpg" alt="联盟大劫掠" class="hero-img" />
-      <div class="card-body">
-        <div class="title">联盟大劫掠，意外遇见野生财主！</div>
-        <div class="meta">侦察回报 · 全盟即时集结 · 战利品共享</div>
-
-        <div class="desc">
-侦察队忽然报来一条绝不能错过的消息：在野外发现了传说中的“野生大财主”！
-频道里瞬间炸开——“快！在线的都上！立刻马上，别磨叽！”  
-大家心情急切，队列风驰电掣地整齐，仿佛要把整个地图掀翻。  
-
-我们冲进去、分秒必争，抢劫过程既紧张又带着疯狂的欢笑。  
-当资源像雨点般刷进仓库，盟里又是一片欢呼与比拼：谁的收益最多？谁出手最狠？  
-
-最后大家围坐晒图分享战利品，仿佛那一刻全盟都在庆祝——  
-“弄完就收场，这波稳了！” 🎉
-        </div>
-
-        <div class="tags" aria-hidden="true">
-          <div class="tag">⚔️ 全员急行</div>
-          <div class="tag">💰 野生财主</div>
-          <div class="tag">🏃‍♂️ 赶紧赶紧</div>
-          <div class="tag">🎉 暴富现场</div>
-        </div>
-
-        <a class="back" href="resources.html">← 返回精彩瞬间</a>
-      </div>
-    </article>
-
-    <!-- Waline 评论区 -->
-    <div id="waline"></div>
-
+    <div class="action-buttons">
+      <button class="btn-like" aria-label="点赞">👍 <span class="like-count">0</span></button>
+      <button class="btn-favorite" aria-label="收藏">⭐</button>
+      <button class="btn-share" aria-label="转发">🔗</button>
+    </div>
   </div>
 
-  <!-- Waline 样式与脚本（放在底部加速首屏渲染） -->
-  <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
-  <script src="https://unpkg.com/@waline/client@v3/dist/waline.js"></script>
-  <script>
-    // 菜单开关（保持与主页一致）
-    const menuToggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
-    menuToggle.addEventListener('click', ()=> {
-      menu.classList.toggle('show');
-      menuToggle.classList.toggle('active');
+  <div class="photo-item" data-id="2">
+    <img src="img/example2.jpg" alt="遭遇围攻" class="photo-img" />
+    <div class="photo-title">遭遇围攻，苦战连连</div>
+    <div class="photo-desc">
+      有个高战力的大佬来进攻盟内成员，大家都非常紧张，互相驻防，互相帮助，在盟里提醒，调拨队列，那种紧张的状态。联盟管理协调沟通，最终成功化解了此次危机。
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn-like" aria-label="点赞">👍 <span class="like-count">0</span></button>
+      <button class="btn-favorite" aria-label="收藏">⭐</button>
+      <button class="btn-share" aria-label="转发">🔗</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 菜单开关逻辑
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("show");
+    menuToggle.classList.toggle("active");
+  });
+
+  menuToggle.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      menu.classList.toggle("show");
+      menuToggle.classList.toggle("active");
+      e.preventDefault();
+    }
+  });
+
+  // 点赞、收藏、转发按钮功能
+  document.querySelectorAll('.photo-item').forEach(item => {
+    const likeBtn = item.querySelector('.btn-like');
+    const favoriteBtn = item.querySelector('.btn-favorite');
+    const shareBtn = item.querySelector('.btn-share');
+    const likeCountSpan = likeBtn.querySelector('.like-count');
+
+    // 初始状态（可从localStorage加载）
+    let liked = false;
+    let likes = 0;
+    let favorited = false;
+
+    // 点赞
+    likeBtn.addEventListener('click', () => {
+      liked = !liked;
+      likes = liked ? likes + 1 : likes - 1;
+      likeCountSpan.textContent = likes;
+      likeBtn.classList.toggle('liked', liked);
     });
-    menuToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        menu.classList.toggle('show');
-        menuToggle.classList.toggle('active');
-        e.preventDefault();
+
+    // 收藏
+    favoriteBtn.addEventListener('click', () => {
+      favorited = !favorited;
+      favoriteBtn.classList.toggle('favorited', favorited);
+      // 这里可以扩展收藏逻辑，比如存localStorage
+    });
+
+    // 转发
+    shareBtn.addEventListener('click', async () => {
+      const shareData = {
+        title: item.querySelector('.photo-title').textContent,
+        text: '分享精彩瞬间，快来看！',
+        url: window.location.href
+      };
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          alert('分享失败或取消');
+        }
+      } else {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          alert('链接已复制到剪贴板');
+        } catch {
+          alert('复制失败，请手动复制链接');
+        }
       }
     });
 
-    // Waline 初始化（把 serverURL 改成你自己的 Vercel 域名）
-    Waline.init({
-      el: '#waline',
-      serverURL: 'https://1fjstwfyh-4k43qrddk-liuleileo723-boops-projects.vercel.app',
-      path: window.location.pathname,
-      meta: ['nick','mail'],
-      requiredMeta: ['nick'],
-      lang: 'zh-CN',
-      locale: { placeholder: '留下你的评论（填写微信昵称可显示）~' }
-    });
-  </script>
+    // 可拓展：图片或标题点击跳转详情页
+    const img = item.querySelector('.photo-img');
+    const title = item.querySelector('.photo-title');
+    const detailUrl = 'detail' + item.dataset.id + '.html'; // 假设详情页命名规则
+    img.addEventListener('click', () => window.location.href = detailUrl);
+    title.addEventListener('click', () => window.location.href = detailUrl);
+  });
+</script>
+
 </body>
 </html>
