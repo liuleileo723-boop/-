@@ -151,7 +151,6 @@
       font-weight: 600;
     }
 
-    /* 点赞、收藏、转发按钮组 */
     .action-buttons {
       margin-top: 16px;
       display: flex;
@@ -185,7 +184,6 @@
       color: #f1c40f;
     }
 
-    /* Responsive */
     @media (max-width: 600px) {
       .title, .photo-title {
         font-size: 1.1rem;
@@ -264,7 +262,26 @@
 
       <a class="back" href="resources.html">← 返回精彩瞬间</a>
     </article>
+
+    <!-- ★★★ 新增：留言板区域 ★★★ -->
+    <section class="card" style="margin-top:20px;">
+      <h3>💬 留下你的评论</h3>
+      <div id="waline"></div>
+    </section>
   </div>
+
+  <!-- ★★★ 新增：Waline 核心 ★★★ -->
+  <script src="https://unpkg.com/@waline/client@v3/dist/waline.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+  <script>
+    Waline.init({
+      el: '#waline',
+      serverURL: 'https://drab-theta.vercel.app', // 你的服务端
+      lang: 'zh-CN',
+      requiredMeta: ['nick'], // 必填昵称
+      placeholder: '说点什么吧～'
+    });
+  </script>
 
   <script>
     // 菜单开关逻辑
@@ -291,12 +308,10 @@
       const shareBtn = item.querySelector('.btn-share');
       const likeCountSpan = likeBtn.querySelector('.like-count');
 
-      // 初始状态（可从localStorage加载）
       let liked = false;
       let likes = 0;
       let favorited = false;
 
-      // 点赞
       likeBtn.addEventListener('click', () => {
         liked = !liked;
         likes = liked ? likes + 1 : likes - 1;
@@ -304,14 +319,11 @@
         likeBtn.classList.toggle('liked', liked);
       });
 
-      // 收藏
       favoriteBtn.addEventListener('click', () => {
         favorited = !favorited;
         favoriteBtn.classList.toggle('favorited', favorited);
-        // 这里可以扩展收藏逻辑，比如存localStorage
       });
 
-      // 转发
       shareBtn.addEventListener('click', async () => {
         const shareData = {
           title: item.querySelector('.photo-title').textContent,
@@ -334,10 +346,9 @@
         }
       });
 
-      // 图片和标题点击跳转详情页
       const img = item.querySelector('.photo-img');
       const title = item.querySelector('.photo-title');
-      const detailUrl = 'detail' + item.dataset.id + '.html'; // 详情页假设命名
+      const detailUrl = 'detail' + item.dataset.id + '.html';
       img.addEventListener('click', () => window.location.href = detailUrl);
       title.addEventListener('click', () => window.location.href = detailUrl);
     });
