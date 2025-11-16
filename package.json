@@ -1,1 +1,8 @@
 "leancloud-storage": "^4.15.0"
+{
+  "name": "my-waline",
+  "version": "1.0.0",
+  "dependencies": {
+    "leancloud-storage": "^4.15.0"
+  }
+}
