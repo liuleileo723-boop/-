@@ -271,17 +271,18 @@
   </div>
 
   <!-- ★★★ 新增：Waline 核心 ★★★ -->
-  <script src="https://unpkg.com/@waline/client@v3/dist/waline.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
-  <script>
-    Waline.init({
-      el: '#waline',
-      serverURL: 'https://drab-theta.vercel.app', // 你的服务端
-      lang: 'zh-CN',
-      requiredMeta: ['nick'], // 必填昵称
-      placeholder: '说点什么吧～'
-    });
-  </script>
+ <!-- 用官方兼容版（UMD） -->
+<script src="https://unpkg.com/@waline/client@v3/dist/waline.umd.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+<script>
+  Waline.init({
+    el: '#waline',
+    serverURL: 'https://drab-theta.vercel.app',
+    lang: 'zh-CN',
+    requiredMeta: ['nick'],
+    placeholder: '说点什么吧～'
+  });
+</script>
 
   <script>
     // 菜单开关逻辑
