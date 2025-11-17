@@ -2,7 +2,7 @@
   "name": "waline-backend",
   "version": "1.0.0",
   "scripts": {
-    "build": "echo 'No build needed'"
+    "build": "echo 'Skip build'"
   },
   "dependencies": {
     "leancloud-storage": "^4.15.0",
