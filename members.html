@@ -125,6 +125,16 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
+    /* 视频版成员卡片专用样式 */
+    .dashi-video {
+      width: 100%;
+      aspect-ratio: 1 / 1;  /* 保持方形视频 */
+      border-radius: 10px;  /* 稍微圆角 */
+      object-fit: cover;    /* 自动裁剪填满 */
+      margin-bottom: 12px;
+      border: 3px solid #e67e22;
+    }
+
     .member-card {
       background: white;
       border-radius: 10px;
