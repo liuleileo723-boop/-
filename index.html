@@ -69,58 +69,52 @@
       color: #e67e22;
       border-bottom: 2px solid #e67e22;
     }
-    /* === 红橙炫彩菜单按钮 === */
-.menu-toggle {
-  display: none;
-  position: absolute;
-  top: 12px;
-  right: 20px;
-  width: 36px;
-  height: 28px;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 1000;
-}
 
-.menu-toggle span {
-  display: block;
-  height: 4px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #ff0000, #ff9900, #ff3300, #ff6600, #ff0000);
-  background-size: 300%;
-  animation: glowLine 2s linear infinite;
-  box-shadow: 0 0 10px rgba(255, 100, 0, 0.7);
-  transition: all 0.4s ease;
-}
+    /* 红橙炫彩菜单按钮 */
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      width: 36px;
+      height: 28px;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .menu-toggle span {
+      display: block;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #ff0000, #ff9900, #ff3300, #ff6600, #ff0000);
+      background-size: 300%;
+      animation: glowLine 2s linear infinite;
+      box-shadow: 0 0 10px rgba(255, 100, 0, 0.7);
+      transition: all 0.4s ease;
+    }
+    /* 点击时动画变成 X 形 */
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 8px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -9px);
+    }
+    /* 炫彩闪烁动画 */
+    @keyframes glowLine {
+      0% { background-position: 0%; box-shadow: 0 0 8px #ff3300; }
+      50% { background-position: 100%; box-shadow: 0 0 18px #ffaa00; }
+      100% { background-position: 0%; box-shadow: 0 0 8px #ff3300; }
+    }
 
-/* 点击时动画变成 X 形 */
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 8px);
-}
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -9px);
-}
-
-/* 炫彩闪烁动画 */
-@keyframes glowLine {
-  0% { background-position: 0%; box-shadow: 0 0 8px #ff3300; }
-  50% { background-position: 100%; box-shadow: 0 0 18px #ffaa00; }
-  100% { background-position: 0%; box-shadow: 0 0 8px #ff3300; }
-}
-
-/* 小屏幕下显示 */
-@media (max-width: 600px) {
-  .menu-toggle {
-    display: flex;
-  }
-}
-
-    /* 响应式设置 */
+    /* 小屏幕下显示 */
     @media (max-width: 600px) {
+      .menu-toggle {
+        display: flex;
+      }
       nav .menu {
         flex-direction: column;
         display: none;
@@ -138,12 +132,9 @@
       nav .menu li a {
         padding: 12px 20px;
       }
-      .menu-toggle {
-        display: flex;
-      }
     }
 
-    /* --- 公告卡片样式 --- */
+    /* 公告卡片样式 */
     .announcement {
       background: #fff;
       border-radius: 10px;
@@ -152,7 +143,7 @@
       padding: 20px 24px;
       margin-top: 40px;
     }
-    .announcement h2 {
+    .announcement h2, .announcement h1 {
       text-align: center;
       color: #2c3e50;
       margin-top: 0;
@@ -179,10 +170,21 @@
       font-size: 0.9em;
       color: #666;
     }
+    /* 额外提示框 */
+    .warning {
+      background: #ffe2e2;
+      padding: 10px 15px;
+      border-left: 5px solid #e60000;
+      margin: 15px 0;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #a00;
+    }
   </style>
 </head>
 <body>
 
+<!-- 导航 -->
 <nav>
   <ul class="menu" id="menu">
     <li><a href="index.html" class="active">首页</a></li>
@@ -191,33 +193,54 @@
     <li><a href="articles.html">玩法介绍</a></li>
     <li><a href="zhandui1.html">战队荣誉</a></li>
   </ul>
- <div class="menu-toggle" id="menu-toggle" aria-label="菜单切换" role="button" tabindex="0">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+  <div class="menu-toggle" id="menu-toggle" aria-label="菜单切换" role="button" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </nav>
 
+<!-- 头图和标题 -->
 <img src="wuyougu2.jpg" alt="无忧谷封面图片" />
 <h1>无忧谷</h1>
-<p>喜欢在旅途中遇见志同道合的朋友。无论前路多难，我们都一起努力向顶峰攀登。愿未来的某天，我们能在山巅相见，分享这一路的风景与成长<p>
+<p>喜欢在旅途中遇见志同道合的朋友。无论前路多难，我们都一起努力向顶峰攀登。愿未来的某天，我们能在山巅相见，分享这一路的风景与成长。</p>
   
-<!-- 公告部分 -->
-  <div class="announcement">
-  <h2>联盟公告：关于狩猎陷阱（打熊）的建议</h2>
-  <p>亲爱的联盟同志们：</p>
-  <p>狩猎陷阱（以下简称打熊）各队的队员有不知道如何加入集结队伍的情况和带错英雄的情况，我们在这里</p>
-  <p>为保证各队提高积分，现提出以下建议：</p>
-  <ol>
-    <li><strong>非队长加入集结的队员首队列必须只带琴科一个英雄！只带一个琴科！</strong>，兵种数量一半为了给其它队员位置。</li>
-    <li><strong>第二列不带英雄！不带英雄！</strong>，兵种数量一半为了给其它队员位置。</li>
-    <li><strong>第三、第四队列以此类推，加入集结的队员不带英雄</strong>，兵种数量一半为了给其它队员位置。</li>
-  </ol>
-  <p class="note">我会把视频放在内部资料区内，自行参考</p>
+<!-- 公告内容：京维人攻略 -->
+<section class="announcement">
+  <h1>京维人攻略</h1>
+
+  <p><strong>最主要原则：</strong>三个主英雄、弓兵留家里，其余部队按以下方式分配。</p>
+
+  <h2>一、戈登带队（只带盾兵）</h2>
+  <p>去找队友互换驻军：你去他家，他来你家。</p>
+
+  <h2>二、不带英雄，只带骑兵</h2>
+  <p>用于支援别人协防。</p>
+
+  <p><strong>所有在线成员</strong>，无论是否互换，请务必在联盟内分享自己主城坐标，便于他人协防。</p>
+  <p>一队不够就出两队，<strong>家里不要留盾兵和骑兵</strong>。</p>
+
+  <h2>三、总部协防（老堃三主英雄 + 盾兵）</h2>
+  <ul>
+    <li>老堃三个主英雄 → 带盾兵</li>
+    <li>戈登 → 只带盾兵</li>
+    <li>按战力排行榜安排驻防顺序</li>
+    <li><strong>每人控制约 3 万盾兵</strong></li>
+  </ul>
+
+  <div class="warning">
+    三不要：<br>
+    ✘ 不要下线<br>
+    ✘ 不要治疗<br>
+    ✘ 不要灭火
+  </div>
+
+  <p>除总部换防及高战回兵，其余成员全程无需操作。</p>
   <p class="signature">—— 无忧谷管理团队 敬上</p>
-</div>
-  
-<div class="announcement">
+</section>
+
+<!-- 公告内容：联盟频道发言建议 -->
+<section class="announcement">
   <h2>联盟公告：关于世界频道发言的建议</h2>
   <p>亲爱的联盟同志们：</p>
   <p>我们注意到，有成员在世界频道中发言或发表个人观点。虽然出发点是好的，咱们自己都了解自己的情况，无心之语，但有时可能会被外人误解。这个世界你也不知道谁是疯子。</p>
@@ -229,11 +252,11 @@
   </ol>
   <p class="note">让我们共同营造一个团结、低调、积极的联盟氛围，树立良好形象。</p>
   <p class="signature">—— 无忧谷管理团队 敬上</p>
-</div>
+</section>
 
-<!-- 活动部分 -->
-<div class="announcement">
-  <h2>📸 联盟活动：征集生活照片与自我介绍</h2>
+<!-- 公告内容：联盟活动征集 -->
+<section class="announcement">
+  <h2>📸 联盟活动：征集生活照片与自我介绍长期</h2>
 
   <p>亲爱的联盟小伙伴们，大家好！</p>
   <p>为了让我们这个大家庭更加亲密，也让大家能更好地认识彼此，我们发起一个小活动——</p>
@@ -259,12 +282,13 @@
   <em>唯愿无忧亦无虑，愿大家的生活如这句话般纯净，无论游戏还是生活，都能拥有无忧无虑的时光。</em></p>
 
   <p class="signature">—— 无忧谷管理团队 · 2025年11月</p>
-</div>
+</section>
 
-<div class="footer">
+<!-- 页脚 -->
+<footer class="footer">
   无忧谷 · 共建和谐联盟世界<br>
   © 2025 无忧谷联盟大家庭
-</div>
+</footer>
 
 <script>
   const menuToggle = document.getElementById('menu-toggle');
