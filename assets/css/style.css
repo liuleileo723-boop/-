@@ -55,6 +55,17 @@ p[style*="text-align:center"] {
   box-shadow: 0 0 10px rgba(0, 255, 150, 0.25);
 }
 
+/* === 文中横幅图（手机适配） === */
+.mid-img {
+  width: 100%;               /* 自适应手机宽度 */
+  height: 6cm;               /* 固定高度，建议 5–7cm */
+  object-fit: cover;         /* 不变形自动裁剪 */
+  margin: 18px 0;            /* 上下间距 */
+  border-radius: 12px;       /* 圆角 */
+  border: 2px solid rgba(0, 255, 180, 0.25);
+  box-shadow: 0 0 12px rgba(0, 255, 180, 0.25);
+}
+
 /* 文本样式 */
 .slide-text {
   font-size: 1rem;
@@ -107,6 +118,10 @@ p[style*="text-align:center"] {
   }
   h1 {
     font-size: 1.7em;
+  }
+  /* 手机端进一步优化横幅图高度 */
+  .mid-img {
+    height: 5.5cm;
   }
 }
 
