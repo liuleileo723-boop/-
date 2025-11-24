@@ -57,30 +57,30 @@ p[style*="text-align:center"] {
 
 /* === 文中横幅图（手机适配） === */
 .mid-img-wrapper {
-  width: 100%;
-  max-height: 6cm;
+  max-width: 100%;
+  max-height: 6cm;         /* 桌面端最大高度 */
+  margin: 18px 0;
   border-radius: 12px;
-  overflow: hidden;
   border: 2px solid rgba(0, 255, 180, 0.25);
   box-shadow: 0 0 12px rgba(0, 255, 180, 0.25);
-  margin: 18px 0;
+  overflow: hidden;        /* 超出部分隐藏，防止破坏布局 */
+  display: flex;           /* 方便图片居中 */
+  justify-content: center;
+  align-items: center;
 }
 
 .mid-img-wrapper img {
-  width: 100%;
-  height: 6cm;          /* 固定高度，配合容器高度 */
-  object-fit: contain;  /* 保持完整显示 */
+  width: 100%;             /* 图片宽度撑满容器 */
+  height: auto;            /* 高度自动，保持比例 */
+  object-fit: contain;     /* 保持图片完整显示，不裁剪 */
   display: block;
   border-radius: 12px;
 }
 
-/* 手机端调整 */
+/* 手机端调整 max-height 更小 */
 @media (max-width: 768px) {
   .mid-img-wrapper {
     max-height: 5.5cm;
-  }
-  .mid-img-wrapper img {
-    height: 5.5cm;
   }
 }
 
